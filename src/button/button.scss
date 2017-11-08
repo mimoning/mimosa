@@ -1,0 +1,72 @@
+@import '../common.scss';
+
+$button-padding: 7px 14px;
+$button-sm-padding: 5px 10px;
+$line-height: 1em;
+
+@mixin button($color) {
+  color: $whight-base;
+  background: $color;
+  border-color: darken($color, 15%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  text-shadow: 0 -1px rgba(0,0,0, 0.2);
+  &:active {
+    box-shadow: inset 0 0 8px 2px rgba(0,0,0,0.1);
+  }
+  &:hover {
+    background-color: darken($color, 3%);
+  }
+}
+
+.ms-btn {
+  font-size: $font-size-base;
+  border-radius: $radius-base;
+  padding: $button-padding;
+  line-height: $line-height;
+  color: $black-base;
+  border: 1px solid $grey-base;
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+  background-image: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+  font-weight: 300;
+
+  &.sm {
+    padding: $button-sm-padding;
+    font-size: $font-size-base - 1px;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 5px 0px rgba(0,0,0,0.1)
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02)
+  }
+
+  @each $colorName, $colorValue in 
+    ('blue', $blue-base),
+    ('green', $green-base),
+    ('orange', $orange-base),
+    ('red', $red-base),
+    ('yellow', $yellow-base) {
+    &.#{$colorName} {
+      @include button($colorValue);
+    }
+  }
+
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    color: darken($grey-base, 10%);
+    background: none;
+    border-color: $grey-base;
+    text-shadow: none;
+    cursor: not-allowed;
+    &:hover {
+      background: none;
+    }
+  }
+}
