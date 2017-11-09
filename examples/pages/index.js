@@ -1,7 +1,9 @@
 import button from './button'
+import input from './input'
 
 const pages = {
-  button: button
+  button,
+  input,
 }
 
 export default function (sources) {
