@@ -2,9 +2,14 @@
 
 $normal-padding: 0 5px 0;
 $normal-width: 240px;
+$normal-placeholder-color: lighten($grey-base, 5%);
 
 $focus-box-shadow: inset 0 0 4px 2px rgba(56, 144, 255, 0.1),
-0 0 4px 2px rgba(56, 144, 255, 0.1); 
+0 0 4px 2px rgba(56, 144, 255, 0.1);
+
+$hover-background: darken($whight-base, 2%);
+
+$disabled-background: lighten($grey-base, 15%);
 
 .ms-input-box {
   display: inline-block;
@@ -26,11 +31,23 @@ $focus-box-shadow: inset 0 0 4px 2px rgba(56, 144, 255, 0.1),
   transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   
   &::placeholder {
-    color: lighten($grey-base, 5%);
+    color: $normal-placeholder-color;
+  }
+
+  &:hover {
+    background: $hover-background;
   }
 
   &:focus {
     border-color: $blue-base;
     box-shadow: $focus-box-shadow;
+  }
+
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    color: $grey-base;
+    background: $disabled-background;
+    cursor: not-allowed;
   }
 }
