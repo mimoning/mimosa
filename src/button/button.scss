@@ -32,7 +32,7 @@ $line-height: 1em;
   outline: none;
   background: none;
   box-shadow: none;
-  font-weight: 300;
+  font-weight: $font-weight-base;
 
   &.sm {
     padding: $button-sm-padding;
