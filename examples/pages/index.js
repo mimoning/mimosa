@@ -1,9 +1,11 @@
 import button from './button'
 import input from './input'
+import radio from './radio'
 
 const pages = {
   button,
   input,
+  radio
 }
 
 export default function (sources) {

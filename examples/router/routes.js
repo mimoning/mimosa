@@ -6,6 +6,10 @@ const routes = [
   {
     name: 'input',
     path: '/input'
+  },
+  {
+    name: 'radio',
+    path: '/radio'
   }
 ]
 

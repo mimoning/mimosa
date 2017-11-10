@@ -10,7 +10,8 @@ function Nav (sources) {
   const vdom$ = States$.concatMap(() => Rx.Observable.of(
     <div>
       <Link className="nav" href="button" router={Router}>Button</Link>
-      <Link className="nav" href="input" router={Router}>input</Link>
+      <Link className="nav" href="input" router={Router}>Input</Link>
+      <Link className="nav" href="radio" router={Router}>Radio</Link>
     </div>
   ))
 
