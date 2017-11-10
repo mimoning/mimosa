@@ -5,7 +5,7 @@ function Link(p, children) {
   }
   return (
     <a href={router.buildUrl(href)}
-      className={`${router.isActive(href) ? 'active' : ''}${className ? className + ' ' : ''}`}
+      className={`${router.isActive(href) ? 'active' : ''}${className ? ' ' + className : ''}`}
       {...props}>
       {children}
     </a>

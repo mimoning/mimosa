@@ -1,5 +1,6 @@
 // font size
 $font-size-base: 14px;
+$font-weight-base: 300;
 
 // color
 $blue-base: #3890ff;
@@ -12,6 +13,10 @@ $black-base: #333;
 $grey-base: #ccc;
 
 // border radius
-$radius-base: 5px;
+$radius-base: 4px;
 
 // shadow
+
+div, span {
+  box-sizing: border-box;
+}

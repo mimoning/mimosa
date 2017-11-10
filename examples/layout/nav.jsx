@@ -1,6 +1,7 @@
 import Rx from 'rxjs'
 
 import Link from '../router/link'
+import './nav.scss'
 
 function Nav (sources) {
   const Router = sources.Router
@@ -8,7 +9,8 @@ function Nav (sources) {
 
   const vdom$ = States$.concatMap(() => Rx.Observable.of(
     <div>
-      <Link href="button" router={Router}>Button</Link>
+      <Link className="nav" href="button" router={Router}>Button</Link>
+      <Link className="nav" href="input" router={Router}>input</Link>
     </div>
   ))
 
