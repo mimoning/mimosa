@@ -62,6 +62,7 @@ $disabled-background: lighten($grey-base, 15%);
     // 伪造的下边框
     &+.ms-bbo-border {
       display: inline-block;
+      max-width: 100%;
       min-width: 20%;
       width: auto;
       height: 1px;
