@@ -16,3 +16,7 @@ $grey-base: #ccc;
 $radius-base: 4px;
 
 // shadow
+
+div, span {
+  box-sizing: border-box;
+}

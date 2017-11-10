@@ -3,6 +3,7 @@
 $normal-padding: 0 5px 0;
 $normal-width: 240px;
 $normal-placeholder-color: lighten($grey-base, 5%);
+$normal-font-family: 'system-ui';
 
 $focus-box-shadow: inset 0 0 4px 2px rgba(56, 144, 255, 0.1),
 0 0 4px 2px rgba(56, 144, 255, 0.1);
@@ -16,6 +17,7 @@ $disabled-background: lighten($grey-base, 15%);
   height: 30px;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .ms-input {
@@ -24,6 +26,7 @@ $disabled-background: lighten($grey-base, 15%);
   padding: $normal-padding;
   border: none;
   outline: none;
+  cursor: text;
   border: 1px solid $grey-base;
   border-radius: $radius-base - 1px;
   font-size: $font-size-base;
@@ -49,5 +52,62 @@ $disabled-background: lighten($grey-base, 15%);
     color: $grey-base;
     background: $disabled-background;
     cursor: not-allowed;
+  }
+
+  // 只有下边框的输入框
+  &.ms-bbo {
+    border-color: transparent;
+    // border-bottom-color: $grey-base;
+    border-radius: 0;
+    // 伪造的下边框
+    &+.ms-bbo-border {
+      display: inline-block;
+      min-width: 20%;
+      width: auto;
+      height: 1px;
+      padding: 0 6px 0;
+      box-sizing: border-box;
+      font-size: $font-size-base;
+      font-weight: $font-weight-base;
+      font-family: $normal-font-family;
+      overflow: hidden;
+      background: $grey-base;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      transition: min-width 0.2s ease-in-out,
+        background 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background: inherit;
+
+      &+.ms-bbo-border {
+        background: $blue-base;
+      }
+    }
+
+    &:focus {
+      box-shadow: none;
+
+      &+.ms-bbo-border {
+        background: $blue-base;
+        box-shadow: $focus-box-shadow;
+        min-width: 100%;
+      }
+    }
+
+    &[disabled],
+    &.disabled,
+    fieldset[disabled] & {
+      color: $grey-base;
+      background: inherit;
+      cursor: not-allowed;
+
+      &+.ms-bbo-border {
+        background: $grey-base;
+      }
+    }
   }
 }

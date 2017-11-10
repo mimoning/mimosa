@@ -3,10 +3,20 @@ import Rx from 'rxjs'
 import './input.scss'
 
 function Input (p) {
-  const { value, className, ...props } = p || {}
+  const { value, className = '', kind, ...props } = p || {}
+  let extraClassName
+  switch (kind) {
+    case 'bbo':
+      extraClassName = 'ms-bbo'
+      break
+    default:
+      extraClassName = ''
+  }
+  const placeholderText = props.placeholder || ''
   return (
-    <div className={`ms-input-box ${className || ''}`}>
-      <input className="ms-input" value={value} {...props}/>
+    <div className={`ms-input-box ${className}`}>
+      <input className={`ms-input ${extraClassName}`} value={value} {...props}/>
+      { kind === 'bbo' ? <span className="ms-bbo-border">{value || placeholderText}</span> : '' }
     </div>
   )
 }
