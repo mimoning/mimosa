@@ -6,9 +6,9 @@ import './radio.scss'
 function Radio (p) {
   const { value, className = '', name, text, ...props } = p || {}
   return (
-    <div className={`${className}`}>
+    <div className={`ms-radio-box ${props.disabled ? 'disabled' : ''} ${className}`}>
       <label>
-        <input type="radio" value={value} name={name} {...props} />
+        <input className="ms-radio" type="radio" value={value} name={name} {...props} />
         {text}
       </label>
     </div>

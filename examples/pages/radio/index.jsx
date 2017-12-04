@@ -16,7 +16,7 @@ function radio (sources) {
     DOM: Rx.Observable.of(
       <div>
         <RadioComponent value="1" name="number" text="11111"></RadioComponent>
-        <RadioComponent value="2" name="number" text="22222"></RadioComponent>
+        <RadioComponent disabled="true" value="2" name="number" text="22222"></RadioComponent>
         <RadioComponent value="3" name="number" text="33333"></RadioComponent>
       </div>
     )
