@@ -15,4 +15,53 @@ function Radio (p) {
   )
 }
 
-export default Radio
+function intent(domSource) {
+  const props$ = domSource.props || Rx.Observable.of([]);
+
+  const value$ = domSource.value
+    .concat(domSource.DOM
+      .select('.ms-radio')
+      .events('change')
+      .map(e => e.target.value)
+    );
+  
+  return {
+    props$,
+    value$
+  }
+}
+
+function model(actions) {
+  return actions.props$
+    .combineLatest(actions.value$)
+    .map(
+      ([props, value]) =>
+        props.map(p => Object.assign({}, p, { checked: p.value === value}))
+    )
+}
+
+function view(states$) {
+  return states$
+    .map(props =>
+      props.map(p => <Radio {...p}/>)
+    )
+}
+
+function RadioComponent(sources) {
+  const actions = intent(sources);
+
+  const states$ = model(actions);
+
+  const vdom$ = view(states$);
+
+  return {
+    DOM: vdom$,
+    value: states$
+      .map(props => {
+        const checkedRadio = props.filter(p => p.checked)[0]
+        return checkedRadio ? checkedRadio.value : undefined
+      })
+  }
+}
+
+export default RadioComponent
